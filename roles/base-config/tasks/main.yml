@@ -3,10 +3,26 @@
   - name: Run yum clean
     shell: yum clean all
 
-  - name: Install EPEL repos 
+  - name: Red Hat Enterprise Linux 7 repos 
     yum:
-      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      name: http://192.168.0.5/repos/rhel-7-server-rpms
       state: present 
+
+  - name: Red Hat Enterprise Linux 7 Common repos 
+    yum:
+      name: http://192.168.0.5/repos/rhel-7-server-rh-common-rpms
+      state: present 
+
+  - name: Red Hat Enterprise Linux 7 extras repos 
+    yum:
+      name: http://192.168.0.5/repos/rhel-7-server-extras-rpms
+      state: present
+
+ 
+  - name: Red Hat Enterprise Linux 7 Optional  repos 
+    yum:
+      name: http://192.168.0.5/repos/rhel-7-server-optional-rpms
+      state: present
 
   - name: Install pip
     yum:
