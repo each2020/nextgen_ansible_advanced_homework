@@ -3,30 +3,7 @@
   - name: Run yum clean
     shell: yum clean all
 
-#  - name: Red Hat Enterprise Linux 7 repos 
-#    yum:
-#      name: https://192.168.0.5/repos/rhel-7-server-rpms
-#       state: present 
-
-  - name: Red Hat Enterprise Linux 7 Common repos 
+  - name: Red Hat Enterprise Linux 7 repos 
     yum:
-      name: http://192.168.0.5/repos/rhel-7-server-rh-common-rpms
+      name: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       state: present 
-
-  - name: Red Hat Enterprise Linux 7 extras repos 
-    yum:
-      name: http://192.168.0.5/repos/rhel-7-server-extras-rpms
-      state: present
-
- 
-  - name: Red Hat Enterprise Linux 7 Optional  repos 
-    yum:
-      name: http://192.168.0.5/repos/rhel-7-server-optional-rpms
-      state: present
-
-  - name: Install pip
-    yum:
-      name:
-        - python-pip
-        - gcc
-      state: latest
