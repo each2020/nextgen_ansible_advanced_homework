@@ -3,7 +3,7 @@
   - name: Run yum clean
     shell: yum clean all
 
-  - name: Red Hat Enterprise Linux 7 repos 
-    yum:
-      name: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-      state: present 
+  - name: Copy repo file
+    copy:
+      src: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      dest: /etc/yum.repos.d/open_three-tier-app.repo
