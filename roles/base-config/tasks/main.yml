@@ -8,15 +8,3 @@
       name: epel
       description: EPEL YUM repo
       baseurl: http://admin.na.shared.opentlc.com/repos/tower//3.7.0-4/rhel-7-server-optional-rpms
-
-  - name: Delete repository
-    yum:
-      name: http://192.168.0.5/repos/rhel-7-server-extras-rpms
-      state: absent
-
-  - name: Disable  repository
-    yum_repository:
-      name: epel
-      description: EPEL YUM repo
-      baseurl: http://192.168.0.5/repos/rhel-7-server-extras-rpms
-      enabled: no
