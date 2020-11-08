@@ -3,7 +3,8 @@
   - name: Run yum clean
     shell: yum clean all
 
-  - name: Copy repo file
-    copy:
-      src: ../files/open_three-tier-app.repo
-      dest: /etc/yum.repos.d/open_three-tier-app.repo
+  - name: Add repository
+    yum_repository:
+      name: epel
+      description: EPEL YUM repo
+      baseurl: http://admin.na.shared.opentlc.com/repos/tower//3.7.0-4/rhel-7-server-optional-rpms
