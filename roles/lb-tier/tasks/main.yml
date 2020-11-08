@@ -1,3 +1,22 @@
 ---
+# lb-tier tasks to install haproxy and copy template to frontend server
+ 
+- name: install haproxy on frontend server
+  yum:
+    name: haproxy
+    state: latest
+
+- name: start and enable haproxy at reboot
+  service:
+    name: haproxy
+    state: started
+    enabled: yes
+
+- name: copy haproxy config to frontend server
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    mode: 0644
+  notify: restart haproxy
 
 
