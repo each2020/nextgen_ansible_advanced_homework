@@ -13,3 +13,10 @@
     yum:
       name: http://192.168.0.5/repos/rhel-7-server-extras-rpms
       state: absent
+
+  - name: Disable  repository
+    yum_repository:
+      name: epel
+      description: EPEL YUM repo
+      baseurl: http://192.168.0.5/repos/rhel-7-server-extras-rpms
+      enabled: no
