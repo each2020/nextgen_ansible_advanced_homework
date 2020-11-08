@@ -3,7 +3,7 @@
   - name: Run yum clean
     shell: yum clean all
 
-  - name: Copy repo file
-    copy:
-      src: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-      dest: /etc/yum.repos.d/open_three-tier-app.repo
+  - name: Install EPEL repos 
+    yum:
+      name: http://admin.na.shared.opentlc.com/repos/tower//3.7.0-4/rhel-7-server-extras-rpms
+      state: present
