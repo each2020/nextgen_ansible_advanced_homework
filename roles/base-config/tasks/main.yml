@@ -11,5 +11,5 @@
 
   - name: Delete repository
     yum:
-      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      name: http://192.168.0.5/repos/rhel-7-server-extras-rpms
       state: absent
