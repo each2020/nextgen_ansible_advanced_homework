@@ -3,10 +3,10 @@
   - name: Run yum clean
     shell: yum clean all
 
-  - name: Red Hat Enterprise Linux 7 repos 
-    yum:
-      name: https://192.168.0.5/repos/rhel-7-server-rpms
-      state: present 
+#  - name: Red Hat Enterprise Linux 7 repos 
+#    yum:
+#      name: https://192.168.0.5/repos/rhel-7-server-rpms
+#       state: present 
 
   - name: Red Hat Enterprise Linux 7 Common repos 
     yum:
