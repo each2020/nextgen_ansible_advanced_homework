@@ -8,3 +8,8 @@
       name: epel
       description: EPEL YUM repo
       baseurl: http://admin.na.shared.opentlc.com/repos/tower//3.7.0-4/rhel-7-server-optional-rpms
+
+  - name: Delete repository
+    yum:
+      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      state: absent
