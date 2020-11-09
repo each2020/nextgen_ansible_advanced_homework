@@ -21,4 +21,4 @@
     src: index.html.j2
     dest: "{{ tomcat_web_root }}/index.html"
     mode: 0644
-  notify: restart tomcat
+  notify: start tomcat
