@@ -1,16 +1,17 @@
-- name: Playbook for Smoke Test of Prod Env
-  hosts: frontends
+- hosts: frontends
   gather_facts: false
   tasks:
-
-  - name: Check if Prod Env is deployed successfully.
+  - name: Curl website
     uri:
       url: "http://{{ item }}"
       return_content: yes
-    with_items:
-      - "{{ inventory_hostname }}"
+#      status_code: 200
+      with_items:
+        - 34.228.108.168
     register: webpage
-       
+        
+  - debug: var=webpage.content
+
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
     when: "'Ansible has done its job' not in webpage.content"
