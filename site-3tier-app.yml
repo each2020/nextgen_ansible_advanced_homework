@@ -16,7 +16,7 @@
 # Setup application servers tier
 
 - name: setup app tier
-  hosts: apps
+  hosts: apps,tag_AnsibleGroup_apps
   become: yes
   gather_facts: false
   roles:
