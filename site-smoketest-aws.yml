@@ -7,7 +7,7 @@
       return_content: yes
 #      status_code: 200
       with_items:
-        - "{{ inventory_hostname }}"
+        - 34.228.108.168
     register: webpage
         
   - debug: var=webpage.content
