@@ -1,4 +1,4 @@
-- hosts: workstation,tag_AnsibleGroup_bastions
+- hosts: workstation
   gather_facts: true
   roles:
   - name: osp-facts
