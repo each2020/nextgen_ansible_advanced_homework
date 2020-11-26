@@ -1,3 +1,52 @@
+1. Provision the Ansible Advanced - Homework and Ansible Advanced NG - OpenStack lab environments
+
+2. Connect to Red Hat Ansible Tower Hamework Lab Environment
+
+- Connect to the control host from your laptop
+
+  [laptop ]$ ssh <user-id>@control.<guid>.example.opentlc.com
+  password: <Enter password as provided>
+  [user@control ~]$ sudo -i
+  [root@control ~]#
+
+3. Set Up Control host
+
+Clone the  https://github.com/each2020/nextgen_ansible_advanced_homework.git
+
+4. From the cloned repo copy labrc file in your home dir and edit to setup env variables which we will be using in the whole lab
+
+[root@control ~]# git clone https://github.com/<github handler>/nextgen_ansible_advanced_homework.git
+[root@control ~]# cd nextgen_ansible_advanced_homework
+[root@control ~/nextgen_ansible_advanced_homework]# cp labrc ~/
+[root@control ~/nextgen_ansible_advanced_homework]# cat ~/labrc
+export TOWER_GUID=<Tower env GUID>
+export OSP_GUID=<OSP Env GUID>
+export OSP_DOMAIN=<OSP Env domain name>
+export OPENTLC_ID=<username-example.com>
+export MAIL_ID=<username@example.com>
+export OPENTLC_PASSWORD=<Your OPENTLC Password>
+export GITHUB_REPO=https://github.com/<github username>/nextgen_ansible_advanced_homework.git
+export JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
+export REGION=us-east-1
+
+5. Set the env variable from ~/labrc file.
+[root@control ~]# source ~/labrc
+
+6. From the cloned repository, run the site-setup-prereqs.yaml playbook to provision the network, flavor, security groups, and SSH keys
+
+7. Verify a successful connection between the control and workstation hosts using the openstack.pem key
+
+[root@control ~/nextgen_ansible_advanced_homework]# ssh -i /root/.ssh/openstack.pem cloud-user@workstation-${OSP_GUID}.${OSP_DOMAIN}
+
+9. From your web browser, connect to tower1.${TOWER_GUID}.example.opentlc.com to verify that the isolated node is operational, using admin for the username and password As provided in email
+
+10. Navigate to Instance Groups from the side panel and select osp
+
+In the left Menu go to Instance Groups --> osp --> instances
+
+Verify workstation entry is there
+
+11.
 ==== Ansible Tower Config
 
 
