@@ -46,13 +46,24 @@ In the left Menu go to Instance Groups --> osp --> instances
 
 Verify workstation entry is there
 
-11.
-==== Ansible Tower Config
+11.Update Ansible Tower WebUI admin password.
 
+Reset r3dh4t1! as admin password after sign-in using password provided in email.
 
-* From the cloned repo run `site-config-tower.yml` playbook to create job templates and workflow template.
+12. Update Ansible Tower admin password in tower-cli config.
 
+[root@control ~]# cat ~/.tower_cli.cfg
+[general]
+host = tower1.<guid>.internal
+username = admin
+password = r3dh4t1!
+verify_ssl = False
 
+13. From the cloned repository, run the site-config-tower.yml playbook to create the job templates and workflow template:
+
+[root@control ~]# source ~/labrc
+[root@control ~]# cd nextgen_ansible_advanced_homework
+[root@control ~/nextgen_ansible_advanced_homework]# ansible-playbook site-config-tower.yml -e tower_GUID=${TOWER_GUID} -e osp_GUID=${OSP_GUID} -e osp_DOMAIN=${OSP_DOMAIN} -e opentlc_login=${OPENTLC_ID} -e path_to_opentlc_key=/root/.ssh/mykey.pem -e param_repo_base=${JQ_REPO_BASE} -e opentlc_password=${OPENTLC_PASSWORD} -e REGION_NAME=${REGION} -e EMAIL=${MAIL_ID} -e github_repo=${GITHUB_REPO}
 
 .List of Playbooks
 [%header,cols=2*]
