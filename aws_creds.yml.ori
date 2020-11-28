@@ -55,15 +55,4 @@
       playbook: site-smoketest-aws.yml
       project: "00_Homework Assignment"
 
-  - name: Update Prod SSH keys three tier app Job template
-    tower_job_template:
-      name: "08_Prod SSH keys three tier app"
-      credential: "Creds for AWS instances"
-      tower_host: tower1.{{tower_guid}}.example.opentlc.com
-      tower_username: admin
-      tower_password: r3dh4t1!
-      tower_verify_ssl: no
-      state: present
-      job_type: run
-      playbook: aws_creds.yml
-      project: "00_Homework Assignment"
+    

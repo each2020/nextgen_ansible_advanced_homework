@@ -65,6 +65,49 @@ verify_ssl = False
 [root@control ~]# cd nextgen_ansible_advanced_homework
 [root@control ~/nextgen_ansible_advanced_homework]# ansible-playbook site-config-tower.yml -e tower_GUID=${TOWER_GUID} -e osp_GUID=${OSP_GUID} -e osp_DOMAIN=${OSP_DOMAIN} -e opentlc_login=${OPENTLC_ID} -e path_to_opentlc_key=/root/.ssh/mykey.pem -e param_repo_base=${JQ_REPO_BASE} -e opentlc_password=${OPENTLC_PASSWORD} -e REGION_NAME=${REGION} -e EMAIL=${MAIL_ID} -e github_repo=${GITHUB_REPO}
 
+14. Provision Production Environment
+
+Perform the following steps to retrieve and prepare requisite scripts that provision the production environment on the control node:
+
+[root@control ~]# mkdir ~/bin
+[root@control ~]# wget http://www.opentlc.com/download/ansible_bootcamp/scripts/common.sh
+[root@control ~]# wget http://www.opentlc.com/download/ansible_bootcamp/scripts/jq-linux64 -O ~/bin/jq
+[root@control ~]# wget http://www.opentlc.com/download/ansible_bootcamp/scripts/order_svc.sh
+[root@control ~]# chmod +x order_svc.sh ~/bin/jq common.sh 
+
+Set up credentials and execute the shell script to deploy the production environment from the control host:
+
+[root@control ~]# cat << EOF > credential.rc
+export username=<userid-companyname.com>
+export password=<opentlc account password>
+export uri=https://labs.opentlc.com
+EOF
+
+[root@control ~]# source credential.rc ; ./order_svc.sh -y -c 'OPENTLC Automation' -i 'Ansible Advanced - Three Tier App' -t 1 -d 'dialog_expiration=7;region=na;nodes=1;dialog_runtime=8;notes=Training - As part of course' 
+
+15. In Ansible Tower UI, go to Templates and select Opentlc Key to edit it.
+
+In USERNAME field, update the user name to ec2-user
+
+In SSH Private Key field, replace the key with the contents from GUIDkey.pem taken from Three Tier App bastion host.
+
+15. Execute the cidr workflow template from the Ansible Tower UI, which must be able to run successfully according to these requirements:
+
+Provision instances in the OpenStack QA environment
+
+Deploy the application in the QA environment
+
+Run the smoke test to verify the application
+
+Clean up if the test fails
+
+Provision instances on AWS using order_svc.sh script for the production environment
+
+Deploy the application in the production environment
+
+Run the smoke test to verify the application
+
+
 .List of Playbooks
 [%header,cols=2*]
 |===
