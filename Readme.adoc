@@ -85,12 +85,6 @@ EOF
 
 [root@control ~]# source credential.rc ; ./order_svc.sh -y -c 'OPENTLC Automation' -i 'Ansible Advanced - Three Tier App' -t 1 -d 'dialog_expiration=7;region=na;nodes=1;dialog_runtime=8;notes=Training - As part of course' 
 
-15. In Ansible Tower UI, go to Templates and select Opentlc Key to edit it.
-
-In USERNAME field, update the user name to ec2-user
-
-In SSH Private Key field, replace the key with the contents from GUIDkey.pem taken from Three Tier App bastion host.
-
 15. Execute the cidr workflow template from the Ansible Tower UI, which must be able to run successfully according to these requirements:
 
 Provision instances in the OpenStack QA environment
